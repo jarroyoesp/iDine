@@ -16,7 +16,5 @@ enum RandomTextContract {
     enum Event: ViewEvent {
         case onAppear
         case retry
-        case postsLoaded([Post])
-        case failed(Error)
     }
 }
