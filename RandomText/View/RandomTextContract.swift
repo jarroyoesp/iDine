@@ -5,7 +5,7 @@ import Foundation
 enum RandomTextContract {
     // MARK: - UI State the view renders
 
-    struct State: Equatable {
+    struct State: ViewState {
         var titles: [String] = []
         var isLoading = false
         var error: String? = nil
@@ -13,7 +13,7 @@ enum RandomTextContract {
 
     // MARK: - Events the view sends to the view-model
 
-    enum Event {
+    enum Event: ViewEvent {
         case onAppear
         case retry
         case postsLoaded([Post])

@@ -1,21 +1,18 @@
 // RandomTextViewModel.swift
 
-import Foundation
+import SwiftUI
 
-@MainActor
-final class RandomTextViewModel: ObservableObject {
-    // Published UI state (single source of truth)
-    @Published private(set) var state = RandomTextContract.State()
-
+class RandomTextViewModel: BaseViewModel<RandomTextContract.Event, RandomTextContract.State> {
     private let service: RandomTextService
 
     // A mock service can be injected.
     init(service: RandomTextService = RandomTextService()) {
         self.service = service
+        super.init(initialState: RandomTextContract.State())
     }
 
     /// Entry point the view uses to drive the state machine.
-    func send(_ event: RandomTextContract.Event) {
+    override func send(_ event: RandomTextContract.Event) {
         switch event {
             case .onAppear, .retry:
                 loadPosts()
