@@ -5,18 +5,15 @@ import Foundation
 enum RandomTextContract {
     // MARK: - UI State the view renders
 
-    struct State: Equatable {
-        var titles: [String] = []
-        var isLoading = false
+    struct State: ViewState {
         var error: String? = nil
+        var isLoading = false
+        var titles: [String] = []
     }
 
     // MARK: - Events the view sends to the view-model
 
-    enum Event {
-        case onAppear
-        case retry
-        case postsLoaded([Post])
-        case failed(Error)
+    enum Event: ViewEvent {
+        case onTapRetryButton
     }
 }

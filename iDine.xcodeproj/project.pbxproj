@@ -30,6 +30,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		048D4A802DE8352000724956 /* Base */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Base;
+			sourceTree = "<group>";
+		};
 		52862D0F2DE4826700C7C3D6 /* iDine */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = iDine;
@@ -71,6 +76,7 @@
 		5290F4CD2DE5DE7E00C78496 /* RandomText */ = {
 			isa = PBXGroup;
 			children = (
+				048D4A802DE8352000724956 /* Base */,
 				5290F4CE2DE5DE8400C78496 /* View */,
 			);
 			path = RandomText;
@@ -104,6 +110,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				048D4A802DE8352000724956 /* Base */,
 				52862D0F2DE4826700C7C3D6 /* iDine */,
 			);
 			name = iDine;
