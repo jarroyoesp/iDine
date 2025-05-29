@@ -17,13 +17,13 @@ struct RandomTextView: View {
             } else if let error = viewModel.state.error {
                 VStack(spacing: 12) {
                     Text(error).foregroundColor(.red)
-                    Button("Retry") { viewModel.send(.retry) }
+                    Button("Retry") { viewModel.send(.onTapButtonRetry) }
                 }
             } else {
                 List(viewModel.state.titles, id: \.self, rowContent: Text.init)
             }
         }
-        .onAppear { viewModel.send(.onAppear) }
+        .onAppear { viewModel.send(.onViewAppear) }
     }
 }
 

@@ -14,7 +14,7 @@ class RandomTextViewModel: BaseViewModel<RandomTextContract.Event, RandomTextCon
     /// Entry point the view uses to drive the state machine.
     override func send(_ event: RandomTextContract.Event) {
         switch event {
-            case .onAppear, .retry:
+            case .onViewAppear, .onTapButtonRetry:
                 loadPosts()
         }
     }
