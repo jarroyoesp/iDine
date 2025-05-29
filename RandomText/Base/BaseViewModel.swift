@@ -1,6 +1,5 @@
 //
 //  BaseViewModel.swift
-//  GHFollowersSwiftUI
 //
 //  Created by Javier Arroyo on 29/5/25.
 //

@@ -14,6 +14,6 @@ enum RandomTextContract {
     // MARK: - Events the view sends to the view-model
 
     enum Event: ViewEvent {
-        case onTapButtonRetry
+        case onTapRetryButton
     }
 }

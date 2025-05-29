@@ -12,22 +12,55 @@ struct RandomTextView: View {
 
     var body: some View {
         NavigationView {
-            if viewModel.state.isLoading {
-                ProgressView("Loading…")
-            } else if let error = viewModel.state.error {
-                VStack(spacing: 12) {
-                    Text(error).foregroundColor(.red)
-                    Button("Retry") { viewModel.send(.onTapButtonRetry) }
-                }
-            } else {
-                List(viewModel.state.titles, id: \.self, rowContent: Text.init)
-            }
+            RandomTextViewMain(
+                state: viewModel.state,
+                sendEvent: { viewModel.onUiEvent(event: $0) }
+            )
         }
     }
 }
 
+private struct RandomTextViewMain: View {
+    let state: RandomTextContract.State
+    let sendEvent: (_ event: RandomTextContract.Event) -> ()
+    
+    var body: some View {
+        if state.isLoading {
+            ProgressView("Loading…")
+        } else if let error = state.error {
+            VStack(spacing: 12) {
+                Text(error).foregroundColor(.red)
+                Button("Retry") { sendEvent(.onTapRetryButton) }
+            }
+        } else {
+            List(state.titles, id: \.self, rowContent: Text.init)
+        }
+    }
+    
+}
+
+// Loading Preview
 #Preview {
-    RandomTextView(viewModel: RandomTextViewModel(service: MockRandomTextService()))
+    RandomTextViewMain(
+        state: RandomTextContract.State(isLoading: true),
+        sendEvent: {event in }
+    )
+}
+
+// Error Preview
+#Preview {
+    RandomTextViewMain(
+        state: RandomTextContract.State(error: "Error"),
+        sendEvent: {event in }
+    )
+}
+
+// Success Preview
+#Preview {
+    RandomTextViewMain(
+        state: RandomTextContract.State(titles: ["Post 1", "Post2"]),
+        sendEvent: {event in }
+    )
 }
 
 // *D* note:
