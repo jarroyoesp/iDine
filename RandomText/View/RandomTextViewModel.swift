@@ -9,12 +9,13 @@ class RandomTextViewModel: BaseViewModel<RandomTextContract.Event, RandomTextCon
     init(service: RandomTextService = RandomTextService()) {
         self.service = service
         super.init(initialState: RandomTextContract.State())
+        loadPosts()
     }
 
     /// Entry point the view uses to drive the state machine.
     override func send(_ event: RandomTextContract.Event) {
         switch event {
-            case .onViewAppear, .onTapButtonRetry:
+            case .onTapButtonRetry:
                 loadPosts()
         }
     }

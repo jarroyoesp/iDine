@@ -15,6 +15,5 @@ enum RandomTextContract {
 
     enum Event: ViewEvent {
         case onTapButtonRetry
-        case onViewAppear
     }
 }

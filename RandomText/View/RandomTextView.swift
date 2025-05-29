@@ -23,7 +23,6 @@ struct RandomTextView: View {
                 List(viewModel.state.titles, id: \.self, rowContent: Text.init)
             }
         }
-        .onAppear { viewModel.send(.onViewAppear) }
     }
 }
 
